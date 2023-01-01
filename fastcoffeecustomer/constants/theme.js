@@ -1,6 +1,6 @@
 export const COLORS = {
     // base colors
-    primary: "#6B5141", // brown
+    primary: "#FC6D3F", // brown
     secondary: "#CDCDD2",   // gray
 
     // colors

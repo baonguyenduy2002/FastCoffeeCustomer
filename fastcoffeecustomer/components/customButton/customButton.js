@@ -21,7 +21,7 @@ const Styles = StyleSheet.create({
     },
 
     container_PRIMARY: {
-        backgroundColor: "#6B5141",
+        backgroundColor: "#FC6D3F",
     },
 
     container_TERTIARY: {},
