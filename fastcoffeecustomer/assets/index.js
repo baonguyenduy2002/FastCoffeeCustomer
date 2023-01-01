@@ -1,7 +1,11 @@
-import loginImage from "./icons"
+import cupCoffee from "./images/cupCoffee.png"
 
-export const Icons = {
-    loginLogo: {
-        image: loginImage
-    },
+const iconsTabBar = {
+    cupcoffee: cupCoffee,
 }
+
+
+
+export {
+    iconsTabBar,
+};

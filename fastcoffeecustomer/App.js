@@ -3,7 +3,9 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
-import { Login } from "./screens/index";
+
+import Tabs from "./components/navigation/tab"
+import { Login, ForgotPassword, Signup, Home } from "./screens/index";
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -11,23 +13,17 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator
           screenOptions={{
-            headerShown: false
+            headerShown: false,
           }}
           initialRouteName={'Login'}
       >
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Home" component={Tabs} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
