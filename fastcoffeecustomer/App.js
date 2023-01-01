@@ -5,7 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 
 import Tabs from "./components/navigation/tab"
-import { Login, ForgotPassword, Signup, Home } from "./screens/index";
+import { Login, ForgotPassword, Signup, Home } from "./screens";
 
 const Stack = createStackNavigator();
 const App = () => {

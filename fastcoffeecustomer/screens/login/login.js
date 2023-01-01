@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import Logo from "../../assets/images/loginLogo.png"
 import CustomInput from "../../components/customInput/customInput.js";
 import CustomButton from "../../components/customButton/customButton.js";
 import { useNavigation } from "@react-navigation/native";
+
+import { icons } from "../../constants"
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -23,7 +24,7 @@ function Login() {
 
     return (
         <View style={Styles.container}>
-            <Image source={Logo} style={Styles.logo} resizeMode="contain" />
+            <Image source={icons.logoLogin} style={Styles.logo} resizeMode="contain" />
             <Text style={Styles.label}>FAST COFFEE</Text>
             <CustomInput placeholder="Your Email" value={email} setValue={setEmail} />
             <CustomInput placeholder="Your Password" value={password} setValue={setPassword} secure={true} />
