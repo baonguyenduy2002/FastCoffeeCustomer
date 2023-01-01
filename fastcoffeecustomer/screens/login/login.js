@@ -1,9 +1,13 @@
 import React, {useState} from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import Logo from "../../assets/images/loginLogo.png"
-import Svg, { Path, SvgXml } from "react-native-svg";
 import CustomInput from "../../components/customInput/customInput.js";
 import CustomButton from "../../components/customButton/customButton.js";
+import { 
+    COLORS, 
+    FONTS,
+    SIZES
+} from '../../constants/theme.js'
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -42,12 +46,14 @@ const Styles = StyleSheet.create({
         paddingHorizontal: 20,
    },
    logo: {
+        marginTop: -100,
+        marginBottom: -50,
         width: '70%',
         maxWidth: 300,
    },
    label: {
         fontSize: 35,
-        color: "#6B5141",
+        color: COLORS.primary,
         fontWeight: "bold",
    }
 })
