@@ -39,7 +39,7 @@ const Tabs = () => {
             options={{
                 tabBarIcon: ({ focused }) => (
                     <Image
-                        source={icons.search}
+                        source={icons.order}
                         style={{
                             width: 30,
                             height: 30,
