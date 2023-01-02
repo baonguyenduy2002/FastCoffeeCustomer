@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { View, Text, StyleSheet, Image, useColorScheme } from "react-native";
-import CustomInput from "../../components/customInput/customInput.js";
-import CustomButton from "../../components/customButton/customButton.js";
+import CustomInput from "../../components/CustomInput/CustomInput.js";
+import CustomButton from "../../components/CustomButton/CustomButton.js";
 import { useNavigation } from "@react-navigation/native";
 
 
