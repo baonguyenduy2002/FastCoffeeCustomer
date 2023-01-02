@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs";
 
-import { Home } from "../../screens";
+import { HomePage, History } from "../../screens";
 import { icons, COLORS } from "../../constants";
 
 const Tab = createBottomTabNavigator();
@@ -16,8 +16,8 @@ const Tabs = () => {
             }}
         >
         <Tab.Screen 
-            name="Home"
-            component={Home}
+            name="HomePage"
+            component={HomePage}
             options={{
                 tabBarIcon: ({ focused }) => (
                     <Image
@@ -34,8 +34,8 @@ const Tabs = () => {
             }}
         />
         <Tab.Screen 
-            name="Search"
-            component={Home}
+            name="DetailPage"
+            component={HomePage}
             options={{
                 tabBarIcon: ({ focused }) => (
                     <Image
@@ -50,12 +50,14 @@ const Tabs = () => {
             }}
         />
         <Tab.Screen 
-            name="Like"
-            component={Home}
+            name="HistoryPage"
+            component={History}
             options={{
+                headerShown: true,
+                headerShadowVisible: false,
                 tabBarIcon: ({ focused }) => (
                     <Image
-                        source={icons.favorite}
+                        source={icons.history}
                         style={{
                             width: 30,
                             height: 30,
@@ -66,8 +68,8 @@ const Tabs = () => {
             }}
         />
         <Tab.Screen 
-            name="User"
-            component={Home}
+            name="UserPage"
+            component={HomePage}
             options={{
                 tabBarIcon: ({ focused }) => (
                     <Image

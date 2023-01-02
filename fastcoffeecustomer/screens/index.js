@@ -1,13 +1,14 @@
 import Login from './Login/Login';
-import Home from './Home/Home';
+import HomePage from "./Home/Home";
 import ForgotPassword from './ForgotPassword/ForgotPassword';
 import Signup from './SignUp/SignUp';
-
+import History from './HistoryOrder/HistoryOrder';
 
 
 export {
     Login,
     Signup,
     ForgotPassword,
-    Home,
+    HomePage,
+    History,
 }
