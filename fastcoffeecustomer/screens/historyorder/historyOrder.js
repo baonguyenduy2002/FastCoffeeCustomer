@@ -14,14 +14,14 @@ const History = () => {
 
     const data = [
         {
-            name: "Phuc Long",
+            name: "Phuc Long - Kha Van Can",
             time: "1 jan 2023 13:23",
             price: "200.000"
         },
         {
             name: "Gong Cha",
             time: "25 dec 2022 19:00",
-            price: "150.000"
+            price: "1.500.000"
         }
     ];
 
@@ -47,7 +47,7 @@ const History = () => {
                 clicked={clicked}
                 setClicked={setClicked}
             />
-            <ScrollView style={styles.scrollView}>
+            <ScrollView style={styles.scrollView} contentContainerStyle={{alignItems: 'center'}}>
             {
                 data.map((item, index) => {
                     return (
@@ -69,9 +69,7 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         width: '95%',
-        backgroundColor: 'blue',
         padding: 10,
-
     },
   });
 
