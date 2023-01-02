@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 
-import Tabs from "./components/Navigation/Tab"
+import Tabs from "./components/Navigation/tab"
 import { Login, ForgotPassword, Signup, HomePage } from "./screens";
 
 const Stack = createStackNavigator();
