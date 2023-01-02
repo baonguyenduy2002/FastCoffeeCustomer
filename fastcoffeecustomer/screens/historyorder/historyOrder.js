@@ -11,6 +11,7 @@ const History = () => {
     const navigation = useNavigation();
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState("");
+    
 
     const data = [
         {
@@ -24,11 +25,12 @@ const History = () => {
             price: "1.500.000"
         }
     ];
+    
+    const [filteredData, setFilteredData] = useState(data);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         navigation.setOptions({
             headerTitle: true,
-            
             headerLargeTitle: true,
             headerStyle: ({height: 110}),
             headerTitle: "Order History",
@@ -38,7 +40,6 @@ const History = () => {
 
     }, [navigation]);
 
-
     return (
         <View style={styles.container}>
             <SearchBar  
@@ -46,10 +47,12 @@ const History = () => {
                 setSearchPhrase={setSearchPhrase}
                 clicked={clicked}
                 setClicked={setClicked}
+                data={data}
+                setFilter={setFilteredData}
             />
             <ScrollView style={styles.scrollView} contentContainerStyle={{alignItems: 'center'}}>
             {
-                data.map((item, index) => {
+                filteredData.map((item, index) => {
                     return (
                         <OrderHistoryTag key={index} {...item} />
                     )

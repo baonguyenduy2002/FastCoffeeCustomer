@@ -3,7 +3,22 @@ import { StyleSheet, TextInput, View, Keyboard, TouchableOpacity, Text } from "r
 import { Feather, Entypo } from "@expo/vector-icons";
 import { COLORS } from "../../constants";
 
-const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setClicked}) => {
+const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setClicked, data, setFilter}) => {
+  
+  const searchFilterFunction = (text) => {
+    if(text){
+        const newData = data.filter(item => {
+            const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
+            const textData = text.toUpperCase();
+            return itemData.indexOf(textData) > -1;
+        })
+        setFilter(newData);
+        console.log(newData);
+    } else {
+      setFilter(data);
+    }
+}
+  
   return (
     <View style={styles.container}>
       <View
@@ -25,7 +40,10 @@ const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setClicked}) => {
           style={styles.input}
           placeholder="Search"
           value={searchPhrase}
-          onChangeText={setSearchPhrase}
+          onChangeText={(text) => {
+            setSearchPhrase(text);
+            searchFilterFunction(text);
+          }}
           onFocus={() => {
             setClicked(true);
           }}
@@ -33,7 +51,8 @@ const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setClicked}) => {
         {/* cross Icon, depending on whether the search bar is clicked or not */}
         {clicked && (
           <Entypo name="cross" size={20} color="black" style={{ padding: 1 }} onPress={() => {
-              setSearchPhrase("")
+              setSearchPhrase("");
+              searchFilterFunction("");
           }}/>
         )}
       </View>
@@ -45,6 +64,8 @@ const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setClicked}) => {
             onPress={() => {
               Keyboard.dismiss();
               setClicked(false);
+              setSearchPhrase("");
+              searchFilterFunction("");
             }}
           >
             <Text
