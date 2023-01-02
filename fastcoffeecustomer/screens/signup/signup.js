@@ -1,36 +1,35 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, useColorScheme } from "react-native";
 import CustomInput from "../../components/customInput/customInput.js";
 import CustomButton from "../../components/customButton/customButton.js";
 import { useNavigation } from "@react-navigation/native";
 
-import { icons } from "../../constants"
 
-function Login() {
+function Signup() {
+    const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
     const navigation = useNavigation();
 
     const onSignInPressed = () => {
-        navigation.navigate("Home")
+        navigation.navigate("Login")
     };
-    const onForgotPasswordPressed = () => {
-        navigation.navigate("ForgotPassword")
-    };
+
     const onSignUpPressed = () => {
-        navigation.navigate("Signup")
+        navigation.navigate("Home")
     };
 
     return (
         <View style={Styles.container}>
-            <Image source={icons.logoLogin} style={Styles.logo} resizeMode="contain" />
-            <Text style={Styles.label}>FAST COFFEE</Text>
+            <Text style={Styles.label}>Create an account</Text>
+            <CustomInput placeholder="Username" value={userName} setValue={setUserName} />
             <CustomInput placeholder="Your Email" value={email} setValue={setEmail} />
             <CustomInput placeholder="Your Password" value={password} setValue={setPassword} secure={true} />
-            <CustomButton text="Sign In" onPress={onSignInPressed} />
-            <CustomButton text="Forgot Password" onPress={onForgotPasswordPressed} type="TERTIARY"/>
-            <CustomButton text="Don't have an account? Create one" onPress={onSignUpPressed} type="TERTIARY" />
+            <CustomInput placeholder="Confirm Password" value={confirmPassword} setValue={setConfirmPassword} secure={true} />
+            <CustomButton text="Register" onPress={onSignUpPressed} />
+            <CustomButton text="Have an account? Sign In" onPress={onSignInPressed} type="TERTIARY" />
         </View>
     )
 }
@@ -45,12 +44,7 @@ const Styles = StyleSheet.create({
         justifyContent: 'center',
         paddingHorizontal: 20,
    },
-   logo: {
-        marginTop: -100,
-        marginBottom: -50,
-        width: '70%',
-        maxWidth: 300,
-   },
+
    label: {
         fontSize: 35,
         color: "#FC6D3F",
@@ -58,4 +52,4 @@ const Styles = StyleSheet.create({
    }
 })
 
-export default Login;
+export default Signup;
