@@ -46,6 +46,8 @@ const Styles = StyleSheet.create({
         paddingHorizontal: 20,
    },
    logo: {
+        marginTop: -100,
+        marginBottom: -50,
         width: '70%',
         maxWidth: 300,
    },
