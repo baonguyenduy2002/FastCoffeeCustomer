@@ -4,8 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 
-import Tabs from "./components/navigation/tab"
-import { Login, ForgotPassword, Signup, Home } from "./screens";
+import Tabs from "./components/Navigation/Tab"
+import { Login, ForgotPassword, Signup, HomePage } from "./screens";
 
 const Stack = createStackNavigator();
 const App = () => {
