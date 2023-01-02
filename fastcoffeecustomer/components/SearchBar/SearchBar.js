@@ -13,7 +13,6 @@ const SearchBar = ({clicked, searchPhrase, setSearchPhrase, setClicked, data, se
             return itemData.indexOf(textData) > -1;
         })
         setFilter(newData);
-        console.log(newData);
     } else {
       setFilter(data);
     }
