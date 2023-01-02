@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 
 import Tabs from "./components/Navigation/Tab"
-import { Login, ForgotPassword, Signup, HomePage } from "./screens";
+import { Login, ForgotPassword, SignUp, HomePage } from "./screens";
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
       >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <Stack.Screen name="Signup" component={Signup} />
+        <Stack.Screen name="Signup" component={SignUp} />
         <Stack.Screen name="Home" component={Tabs} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -5,7 +5,7 @@ import CustomButton from "../../components/CustomButton/CustomButton.js";
 import { useNavigation } from "@react-navigation/native";
 
 
-function Signup() {
+function SignUp() {
     const [fullName, setFullName] = useState('');
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
@@ -69,4 +69,4 @@ const Styles = StyleSheet.create({
    }
 })
 
-export default Signup;
+export default SignUp;
