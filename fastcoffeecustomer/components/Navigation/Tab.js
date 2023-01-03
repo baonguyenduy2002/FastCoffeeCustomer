@@ -4,6 +4,7 @@ import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom
 
 import { HomePage, History } from "../../screens";
 import { icons, COLORS } from "../../constants";
+import ShopList from "../../screens/ShopList/ShopList";
 
 const Tab = createBottomTabNavigator();
 
@@ -69,7 +70,7 @@ const Tabs = () => {
         />
         <Tab.Screen 
             name="UserPage"
-            component={HomePage}
+            component={ShopList}
             options={{
                 tabBarIcon: ({ focused }) => (
                     <Image
