@@ -19,6 +19,8 @@ const Tabs = () => {
             name="HomePage"
             component={HomePage}
             options={{
+                headerShown: true,
+                headerShadowVisible: false,
                 tabBarIcon: ({ focused }) => (
                     <Image
                         source={icons.cupCoffee}

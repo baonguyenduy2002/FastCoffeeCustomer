@@ -22,7 +22,7 @@ function ForgotPassword() {
 
     return (
         <View style={Styles.container}>
-            <Text style={Styles.label}>Create an account</Text>
+            <Text style={Styles.label}>Reset your password</Text>
             <CustomInput placeholder="Username" value={userName} setValue={setUserName} />
             <CustomInput placeholder="Your Email" value={email} setValue={setEmail} />
             <CustomInput placeholder="Your Password" value={password} setValue={setPassword} secure={true} />

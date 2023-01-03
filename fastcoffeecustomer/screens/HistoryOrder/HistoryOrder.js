@@ -23,7 +23,12 @@ const History = () => {
             name: "Gong Cha",
             time: "25 dec 2022 19:00",
             price: "1.500.000"
-        }
+        },
+        {
+            name: "TocoToco",
+            time: "2 jan 2023 13:00",
+            price: "100.000"
+        },
     ];
     
     const [filteredData, setFilteredData] = useState(data);
@@ -31,7 +36,6 @@ const History = () => {
     useEffect(() => {
         navigation.setOptions({
             headerTitle: true,
-            headerLargeTitle: true,
             headerStyle: ({height: 110}),
             headerTitle: "Order History",
             headerTitleAlign: 'left',
@@ -54,7 +58,7 @@ const History = () => {
             {
                 filteredData.map((item, index) => {
                     return (
-                        <OrderHistoryTag key={index} {...item} />
+                        <OrderHistoryTag key={index} props={item} type="HISTORY"/>
                     )
                 })
             }
