@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import { icons, images, COLORS } from "../../constants";
@@ -77,12 +77,29 @@ const HomePage = () => {
     navigation.navigate('HistoryPage');
   }
 
+  const onModifyRoutePressed = () => {
+    navigation.navigate('MenuPage');
+  }
+
   return (
       <View style={styles.container}>
-        <Text>Select Route</Text>
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={onModifyRoutePressed}
+        >
+          <Image
+            source={icons.addLocation}
+            style={styles.image}
+            resizeMode='contain'
+            resizeMethod="scale"
+          />
+          <Text style={styles.text}>Choose your route</Text>
+        </TouchableOpacity>
+        
         <ScrollView 
           style={styles.scrollView}
           contentContainerStyle={{ alignItems: "center", justifyContent: "space-between"}}
+          showsVerticalScrollIndicator={false}
         >
           {/* Promo Container */}
           <HomeTags 
@@ -147,20 +164,25 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       padding: 5,
     },
-    titleContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    title: {
-      fontSize: 17,
-      fontWeight: 'bold',
-
-    },
     button: {
-      fontSize: 14,
+      alignSelf: 'flex-start',
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginLeft: 10,
+      backgroundColor: COLORS.primary,
+      padding: 5,
+      borderRadius: 20
+    },
+    image: {
+      width: 30,
+      height: 30,
+      tintColor: 'white'
+    },
+    text: {
+      fontSize: 15,
       fontWeight: '500',
-      color: COLORS.primary,
+      marginLeft: 5,
+      color: 'white'
     }
 });
 

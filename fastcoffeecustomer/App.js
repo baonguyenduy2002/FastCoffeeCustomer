@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 
 import Tabs from "./components/Navigation/Tab"
-import { Login, ForgotPassword, Signup, HomePage } from "./screens";
+import { Login, ForgotPassword, Signup, MenuPage } from "./screens";
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -19,6 +19,7 @@ const App = () => {
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Home" component={Tabs} />
+        <Stack.Screen name="MenuPage" component={MenuPage} />
       </Stack.Navigator>
     </NavigationContainer>
   )
