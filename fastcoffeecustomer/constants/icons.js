@@ -6,6 +6,7 @@ export const user = require("../assets/icons/user.png");
 export const order = require("../assets/icons/order.png");
 export const addLocation = require("../assets/icons/addLocation.png");
 export const arrowBack = require("../assets/icons/arrowBack.png");
+export const star = require("../assets/icons/star.png");
 
 export default {
     logoLogin,
@@ -16,4 +17,5 @@ export default {
     order,
     addLocation,
     arrowBack,
+    star,
 }

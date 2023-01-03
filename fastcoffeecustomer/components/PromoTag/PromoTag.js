@@ -61,14 +61,14 @@ const styles = StyleSheet.create ({
         color: 'white',
     },
     buyNow: {
-        color: '#FFFFFF',
+        color: COLORS.primary,
         fontSize: 14,
         fontWeight: 'bold',
     },
     button: {
         width: '50%',
         height: 40,
-        backgroundColor: "#006E44",
+        backgroundColor: COLORS.white,
         alignItems: 'center',
         borderRadius: 17,
         justifyContent: 'center'

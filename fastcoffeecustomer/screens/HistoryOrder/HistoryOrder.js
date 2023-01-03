@@ -41,6 +41,7 @@ const History = () => {
             headerTitleAlign: 'left',
             headerTitleStyle: ({color: COLORS.primary, fontSize: 30, fontWeight: 'bold'}),
         });
+        setFilteredData(data);
 
     }, [navigation]);
 
@@ -54,7 +55,11 @@ const History = () => {
                 data={data}
                 setFilter={setFilteredData}
             />
-            <ScrollView style={styles.scrollView} contentContainerStyle={{alignItems: 'center'}}>
+            <ScrollView 
+                style={styles.scrollView} 
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={{alignItems: 'center'}}
+            >
             {
                 filteredData.map((item, index) => {
                     return (
@@ -77,6 +82,7 @@ const styles = StyleSheet.create({
     scrollView: {
         width: '95%',
         padding: 10,
+        marginBottom: 100
     },
   });
 
