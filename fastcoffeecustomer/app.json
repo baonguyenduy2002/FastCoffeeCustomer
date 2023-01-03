@@ -28,6 +28,21 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "maplibre"
+        }
+      ],
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsImpl": "mapbox",
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiaG9hbmd0cmFuMTI5MDIiLCJhIjoiY2xjZjA0dHlpMGMzcDNwcWhhbzgyZTI3bCJ9.nNLjAAe3QZqxnYhBbSuXeg"
+        }
+      ]
+    ]
   }
 }

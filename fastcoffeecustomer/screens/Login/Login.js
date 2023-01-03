@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import CustomInput from "../../components/CustomInput/CustomInput.js";
 import CustomButton from "../../components/CustomButton/CustomButton.js";
 import { useNavigation } from "@react-navigation/native";
-
-import { icons } from "../../constants"
+import { icons, COLORS } from "../../constants"
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -53,7 +52,7 @@ const Styles = StyleSheet.create({
    },
    label: {
         fontSize: 35,
-        color: "#FC6D3F",
+        color: COLORS.primary,
         fontWeight: "bold",
    }
 })
