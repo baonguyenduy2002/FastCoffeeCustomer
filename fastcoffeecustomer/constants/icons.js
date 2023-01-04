@@ -8,6 +8,11 @@ export const addLocation = require("../assets/icons/addLocation.png");
 export const arrowBack = require("../assets/icons/arrowBack.png");
 export const star = require("../assets/icons/star.png");
 export const checkoutOrder = require("../assets/icons/checkoutOrder.png");
+export const birthday = require("../assets/icons/birthday.png");
+export const home = require("../assets/icons/home.png");
+export const mail = require("../assets/icons/mail.png");
+export const phone = require("../assets/icons/phone.png");
+export const location = require("../assets/icons/location.png");
 
 export default {
     logoLogin,
@@ -20,4 +25,9 @@ export default {
     arrowBack,
     star,
     checkoutOrder,
+    birthday,
+    home,
+    mail,
+    phone,
+    location,
 }

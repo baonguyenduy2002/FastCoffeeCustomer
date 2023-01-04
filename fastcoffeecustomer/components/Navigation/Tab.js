@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs";
 
-import { HomePage, History, OrderTracking } from "../../screens";
+import { HomePage, History, OrderTracking, UserProfile } from "../../screens";
 import { icons, COLORS } from "../../constants";
 
 const Tab = createBottomTabNavigator();
@@ -71,7 +71,7 @@ const Tabs = () => {
         />
         <Tab.Screen 
             name="UserPage"
-            component={HomePage}
+            component={UserProfile}
             options={{
                 tabBarIcon: ({ focused }) => (
                     <Image

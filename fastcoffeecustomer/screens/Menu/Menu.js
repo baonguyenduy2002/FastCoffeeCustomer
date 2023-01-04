@@ -6,7 +6,9 @@ import { icons, COLORS, images } from "../../constants";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ItemTags from "../../components/ItemTag/ItemTag";
 
-const MenuPage = ({shop, items}) => {
+const MenuPage = ({route}) => {
+    const { shop, items } = route.params;
+    const { id, name, photo, address, rating } = shop;
     const data = [
         {
             image: images.milktea,
@@ -82,14 +84,14 @@ const MenuPage = ({shop, items}) => {
     const [filteredData, setFilteredData] = useState(data);
 
     const onBackPressed = () => {
-        navigation.navigate("HomePage");
+        navigation.navigate("ShopList");
     }
 
     return (
         <View style={styles.container}>
             <View style={styles.headerContainer}>
                 <ImageBackground 
-                    source={images.phuclong1} 
+                    source={photo} 
                     resizeMode='stretch'
                     style={styles.header}
                 >
@@ -141,13 +143,13 @@ const MenuPage = ({shop, items}) => {
                                 fontSize: 20,
                                 fontWeight: 'bold',
                             }}
-                        >Phuc Long</Text>
+                        >{name}</Text>
                         <Text
                             style={{
                                 fontSize: 15,
                                 fontWeight: '300',
                             }}
-                        >22 Kha Van Can</Text>
+                        >{address}</Text>
                         <View style={styles.rating}>
                             <Image 
                                 source={icons.star}
@@ -157,7 +159,7 @@ const MenuPage = ({shop, items}) => {
                                     tintColor: COLORS.primary
                                 }}
                             />
-                            <Text>4.7</Text>
+                            <Text>{rating}</Text>
                         </View>
                     </View>
                     <Text 

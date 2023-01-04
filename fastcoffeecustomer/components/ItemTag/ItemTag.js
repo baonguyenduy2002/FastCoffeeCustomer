@@ -26,6 +26,9 @@ const ItemTags = ({props}) => {
                         <Text
                             style={{
                                 color: 'blue',
+                                textDecorationLine: 'underline',
+                                fontWeight: '500',
+                                fontSize: 14,
                             }}
                         >+ Add note</Text>
                     </TouchableOpacity>
@@ -59,11 +62,11 @@ const styles = StyleSheet.create ({
     },
     info1: {
         justifyContent: 'space-between',
-        backgroundColor: 'blue',
+        // backgroundColor: 'blue',
         width: '75%',
     },
     info2: {
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         alignItems: 'flex-end',
         justifyContent: 'space-between',
         flex: 1,

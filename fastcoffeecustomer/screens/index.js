@@ -4,6 +4,8 @@ import ForgotPassword from './ForgotPassword/ForgotPassword';
 import Signup from './SignUp/SignUp';
 import History from './HistoryOrder/HistoryOrder';
 import OrderTracking from './OrderTracking/OrderTracking';
+import UserProfile from './UserProfile/UserProfile';
+import ShopList from './ShopList/ShopList';
 
 import MenuPage from './Menu/Menu';
 
@@ -14,5 +16,7 @@ export {
     HomePage,
     History,
     OrderTracking,
-    MenuPage
+    MenuPage,
+    UserProfile,
+    ShopList
 }

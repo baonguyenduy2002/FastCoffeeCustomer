@@ -78,7 +78,7 @@ const HomePage = () => {
   }
 
   const onModifyRoutePressed = () => {
-    navigation.navigate('MenuPage');
+    navigation.navigate('ShopList');
   }
 
   return (
