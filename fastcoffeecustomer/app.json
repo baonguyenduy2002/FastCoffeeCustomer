@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.hontrn9122.FastCoffeCustomer"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -43,6 +44,11 @@
           "RNMapboxMapsDownloadToken": "sk.eyJ1IjoiaG9hbmd0cmFuMTI5MDIiLCJhIjoiY2xjZjA0dHlpMGMzcDNwcWhhbzgyZTI3bCJ9.nNLjAAe3QZqxnYhBbSuXeg"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c30d8a69-6b40-4cdc-8e54-ca002b3d7d73"
+      }
+    }
   }
 }
