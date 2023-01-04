@@ -5,7 +5,6 @@ import { COLORS, icons } from "../../constants";
 import { SIZES } from "../../constants/theme";
 import { useNavigation } from "@react-navigation/native";
 
-
 const UserProfile = () => {
     const navigation = useNavigation();
 
