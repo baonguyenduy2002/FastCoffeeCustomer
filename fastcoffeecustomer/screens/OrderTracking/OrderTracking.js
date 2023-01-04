@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Alert } from "react-native";
 import { COLORS } from '../../constants'
 import { Route } from "../../assets/images"
 import * as Progress from "react-native-progress"
