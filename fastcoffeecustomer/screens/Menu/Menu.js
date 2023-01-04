@@ -17,13 +17,13 @@ const MenuPage = ({shop, items}) => {
         {
             image: images.milktea,
             description: 'description',
-            name: 'Milk Tea',
+            name: 'Coffee',
             price: '50.000' 
         },
         {
             image: images.milktea,
             description: 'description',
-            name: 'Milk Tea',
+            name: 'Oolong Tea',
             price: '50.000' 
         },
         {
@@ -79,7 +79,7 @@ const MenuPage = ({shop, items}) => {
     const navigation = useNavigation();
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState("");
-    const [filteredData, setFilteredData] = useState(items);
+    const [filteredData, setFilteredData] = useState(data);
 
     const onBackPressed = () => {
         navigation.navigate("HomePage");
@@ -111,7 +111,7 @@ const MenuPage = ({shop, items}) => {
                         setSearchPhrase={setSearchPhrase}
                         clicked={clicked}
                         setClicked={setClicked}
-                        data={items}
+                        data={data}
                         setFilter={setFilteredData}
                     />
                 </ImageBackground>
@@ -157,7 +157,7 @@ const MenuPage = ({shop, items}) => {
                         }}
                     >Menu</Text>
                     {
-                        data.map((item, index) => {
+                        filteredData.map((item, index) => {
                             return (
                                 <ItemTags key={index} props={item}/>
                             )              
@@ -202,9 +202,9 @@ const styles = StyleSheet.create ({
         zIndex: 2,
         marginTop: -30,
 
+        width: '100%',
         flex: 1,
-        alignItems: 'center'
-
+        alignItems: 'center',
     },
     scrollView: {
         width: '100%',
