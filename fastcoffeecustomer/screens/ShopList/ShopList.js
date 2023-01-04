@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { COLORS, SIZES, FONTS} from  '../../constants/theme';
 import { icons, images } from '../../constants';
 import ShopTags from '../../components/ShopTag/ShopTag';
+import SearchBar from '../../components/SearchBar/SearchBar';
 
 const ShopList = () => {
     const shopData = [
@@ -45,53 +47,47 @@ const ShopList = () => {
         },
     ]
 
-    const [shop, setShops] = React.useState(shopData);
+    const navigation = useNavigation();
+    const [clicked, setClicked] = useState(false);
+    const [searchPhrase, setSearchPhrase] = useState("");
+    const [shop, setShops] = useState(shopData);
+
+    const onBackPressed = () => {
+        navigation.navigate("HomePage");
+    }
 
     function renderHeader() {
         return (
-            <View style = {{flexDirection: 'row', height: 50}}>
-                <TouchableOpacity style= {{
-                    width: 50,
-                    paddingLeft: SIZES.padding * 2,
-                    justifyContent: 'center'
-                    
-                }}>
+            <View style = {styles.containerHeader}>
+                <TouchableOpacity
+                        onPress={onBackPressed}
+                        style={styles.backButton}
+                    >
+                        <Image 
+                            source={icons.arrowBack}
+                            style={{
+                                width: 25,
+                                height: 25,
+                                tintColor: COLORS.black
+                            }}
+                        />
+                    </TouchableOpacity>
+                <TouchableOpacity style= {[styles.locationButton, styles.shadow]}>
                     <Image 
                         source={icons.location}
                         resizeMode="contain"
                         style = {{
-                            width: 30,
-                            height: 30
+                            width: 25,
+                            height: 25,
+                            tintColor: COLORS.primary,
                         }}
-                        />
-
-                </TouchableOpacity>
-
-                <View style = {{flex: 1, alignItems:'center', justifyContent: 'center'}}>
-                    <View style = {{
-                        width: '70%',
-                        height: '100%',
-                        backgroundColor: COLORS.lightGray4,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: SIZES.radius
-                    }}>
-                        <Text>Location</Text>
-                    </View>
-                </View>
-                <TouchableOpacity style = {{
-                    width: 50,
-                    paddingRight: SIZES.padding * 2,
-                    justifyContent: 'center'
-                }}>
-                    <Image 
-                        source={images.coffee1}
-                        resizeMode="contain"
-                        style = {{
-                            width: 30,
-                            height: 30
-                        }}/>
-
+                    />
+                    <Text
+                        style={{
+                            fontSize: 15,
+                            fontWeight: 'bold'
+                        }}
+                    >Location</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -121,11 +117,27 @@ const ShopList = () => {
         <SafeAreaView 
             style = {{
                 marginTop: 20,
-                backgroundcolor: COLORS.lightGray4}}
-                >
+                backgroundcolor: COLORS.lightGray4
+            }}
+        >
             {renderHeader()}
-            <View></View>
-            <View></View>
+            <View
+                style={{
+                    width: '100%',
+                    justifyContent: 'center',
+                    paddingLeft: 10,
+                    marginBottom: 10,
+                }}
+            >
+                <SearchBar  
+                searchPhrase={searchPhrase}
+                setSearchPhrase={setSearchPhrase}
+                clicked={clicked}
+                setClicked={setClicked}
+                data={shopData}
+                setFilter={setShops}
+            />
+            </View>
             {renderShop()}
         </SafeAreaView>
     )
@@ -133,9 +145,26 @@ const ShopList = () => {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundcolor: COLORS.lightGray4
+    containerHeader: {
+        width: '100%',
+        flexDirection: 'row', 
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        paddingVertical: 5,
+    },
+    backButton: {
+        marginHorizontal: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 20,
+    },
+    locationButton: {
+        flexDirection: 'row', 
+        backgroundColor: COLORS.white,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 5,
+        borderRadius: 20,
     },
     shadow: {
         shadowColor: "#000",
