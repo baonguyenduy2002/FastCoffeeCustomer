@@ -114,6 +114,19 @@ const MenuPage = ({shop, items}) => {
                         data={data}
                         setFilter={setFilteredData}
                     />
+                    <TouchableOpacity
+                        onPress={{}}
+                        style={styles.backButton}
+                    >
+                        <Image 
+                            source={icons.checkoutOrder}
+                            style={{
+                                width: 30,
+                                height: 30,
+                                tintColor: COLORS.white
+                            }}
+                        />
+                    </TouchableOpacity>
                 </ImageBackground>
             </View>
             <View style={styles.subContainer}>
@@ -187,7 +200,7 @@ const styles = StyleSheet.create ({
         height: '100%',
         flexDirection: 'row',
         alignItems: 'flex-start',
-        backgroundColor: 'blue',
+        justifyContent: 'space-between',
     },
     backButton: {
         backgroundColor: "rgba(0, 0, 0, 0.3)",
@@ -208,7 +221,7 @@ const styles = StyleSheet.create ({
     },
     scrollView: {
         width: '100%',
-        marginBottom: 100
+        marginBottom: 50
     },
     shopInfo: {
         shadowColor: "#000",
