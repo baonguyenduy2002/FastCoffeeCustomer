@@ -1,9 +1,11 @@
-import React, {useState} from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, Image, Alert } from "react-native";
 import CustomInput from "../../components/CustomInput/CustomInput.js";
 import CustomButton from "../../components/CustomButton/CustomButton.js";
 import { useNavigation } from "@react-navigation/native";
-import { icons, COLORS } from "../../constants"
+import { icons, COLORS, HOST } from "../../constants"
+
+
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -11,8 +13,39 @@ function Login() {
 
     const navigation = useNavigation();
 
-    const onSignInPressed = () => {
-        navigation.navigate("Home")
+    const onSignInPressed = async (email, password) => {
+        fetch(HOST + "/api/customer/login", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+            }),
+        })
+            .then(response => response.json())
+            .then(accountInfo => {
+                console.log(accountInfo);
+                if (accountInfo.length === 0) {
+                    Alert.alert(
+                        "Error!",
+                        "Invalid email or password!",
+                        [
+                            { text: "OK" }
+                        ]
+                    );
+                }
+                else {
+                    navigation.navigate("Home", { accountInfo: accountInfo[0] })
+                };
+                return accountInfo;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
     };
     const onForgotPasswordPressed = () => {
         navigation.navigate("ForgotPassword")
@@ -27,8 +60,8 @@ function Login() {
             <Text style={Styles.label}>FAST COFFEE</Text>
             <CustomInput placeholder="Your Email" value={email} setValue={setEmail} />
             <CustomInput placeholder="Your Password" value={password} setValue={setPassword} secure={true} />
-            <CustomButton text="Sign In" onPress={onSignInPressed} />
-            <CustomButton text="Forgot Password" onPress={onForgotPasswordPressed} type="TERTIARY"/>
+            <CustomButton text="Sign In" onPress={() => onSignInPressed(email, password)} />
+            <CustomButton text="Forgot Password" onPress={onForgotPasswordPressed} type="TERTIARY" />
             <CustomButton text="Don't have an account? Create one" onPress={onSignUpPressed} type="TERTIARY" />
         </View>
     )
@@ -37,24 +70,24 @@ function Login() {
 
 
 const Styles = StyleSheet.create({
-   container: {
+    container: {
         flex: 1,
         backgroundColor: '#F9FBFC',
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 20,
-   },
-   logo: {
+    },
+    logo: {
         marginTop: -100,
         marginBottom: -50,
         width: '70%',
         maxWidth: 300,
-   },
-   label: {
+    },
+    label: {
         fontSize: 35,
         color: COLORS.primary,
         fontWeight: "bold",
-   }
+    }
 })
 
 export default Login;

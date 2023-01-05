@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { COLORS } from '../../constants'
-import { Route } from "../../assets/images"
+import { View, Text, StyleSheet, Image, Alert } from "react-native";
+import { COLORS, icons } from '../../constants'
 import * as Progress from "react-native-progress"
 import MapboxGL from '@rnmapbox/maps';
 import * as Location from 'expo-location';
@@ -14,8 +13,8 @@ const accessToken = 'pk.eyJ1IjoiaG9hbmd0cmFuMTI5MDIiLCJhIjoiY2xjZzN3OHdwMGYxODN2
 MapboxGL.setAccessToken(accessToken);
 const directionsClient = MapboxDirectionsFactory({ accessToken });
 
-const OrderTracking = () => {
-
+const OrderTracking = (input) => {
+    let { accountInfo } = input.route.params;
     //Sample data get from calling api
     const currentOrder = {
         ID: 1,
@@ -128,7 +127,7 @@ const OrderTracking = () => {
                         </Text>
                     </View>
                     <Image
-                        source={Route}
+                        source={icons.orderTracking}
                         style={styles.orderImage}
                     />
                 </View>

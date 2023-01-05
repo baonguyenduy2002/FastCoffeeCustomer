@@ -4,7 +4,8 @@ import { StatusBar } from "expo-status-bar";
 import { COLORS, icons } from "../../constants";
 import { useNavigation } from "@react-navigation/native";
 
-const UserProfile = () => {
+const UserProfile = ({route}) => {
+    let { accountInfo } = route.params;
     const navigation = useNavigation();
 
     return(
