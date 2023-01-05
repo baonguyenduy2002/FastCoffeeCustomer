@@ -1,5 +1,6 @@
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
+import { COLORS } from "../../constants"
 
 const CustomInput = ({value, setValue, placeholder, secure}) => {
     return (
@@ -8,6 +9,7 @@ const CustomInput = ({value, setValue, placeholder, secure}) => {
                 value={value}
                 onChangeText={setValue}
                 placeholder={placeholder}
+                placeholderTextColor={COLORS.darkgray}
                 style={Styles.input}
                 secureTextEntry={secure}
             />

@@ -10,7 +10,7 @@ import MenuTags from "../../components/MenuTag/MenuTag";
 
 const HomePage = ({route}) => {
   let { accountInfo } = route.params;
-  console.log(accountInfo);
+  // console.log(accountInfo);
   const data = [
     {
         name: "Phuc Long - Kha Van Can",

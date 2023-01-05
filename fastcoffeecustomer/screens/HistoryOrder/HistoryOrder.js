@@ -6,8 +6,8 @@ import { icons, COLORS } from "../../constants";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import OrderHistoryTag from "../../components/OrderHistoryTag/OrderHistoryTag";
 
-const History = (params) => {
-    let { accountInfo } = params;
+const History = ({route}) => {
+    let { accountInfo } = route.params;
 
     const navigation = useNavigation();
     const [clicked, setClicked] = useState(false);

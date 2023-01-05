@@ -13,39 +13,51 @@ function Login() {
 
     const navigation = useNavigation();
 
-    const onSignInPressed = async (email, password) => {
-        fetch(HOST + "/api/customer/login", {
-            method: 'POST',
-            headers: {
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-            }),
-        })
-            .then(response => response.json())
-            .then(accountInfo => {
-                console.log(accountInfo);
-                if (accountInfo.length === 0) {
-                    Alert.alert(
-                        "Error!",
-                        "Invalid email or password!",
-                        [
-                            { text: "OK" }
-                        ]
-                    );
-                }
-                else {
-                    navigation.navigate("Home", { accountInfo: accountInfo[0] })
-                };
-                return accountInfo;
+    const onSignInPressed = (email, password) => {
+        if (email === '' || password === '') {
+            Alert.alert(
+                "Error!",
+                "Please enter username and password!",
+                [
+                    { text: "OK" }
+                ]
+            );
+        }
+        else {
+            // console.log(email, password)
+            fetch(HOST + "/api/customer/login", {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
             })
-            .catch(error => {
-                console.error(error);
-            });
-
+                .then(response => response.json())
+                .then(accountInfo => {
+                    console.log(accountInfo);
+                    if (accountInfo.length === 0) {
+                        Alert.alert(
+                            "Error!",
+                            "Invalid email or password!",
+                            [
+                                { text: "OK" }
+                            ]
+                        );
+                    }
+                    else {
+                        navigation.navigate("Home", { accountInfo: accountInfo[0] })
+                    };
+                    return accountInfo;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+        // navigation.navigate("Home", { accountInfo: {Name: "hehe"} })
     };
     const onForgotPasswordPressed = () => {
         navigation.navigate("ForgotPassword")
