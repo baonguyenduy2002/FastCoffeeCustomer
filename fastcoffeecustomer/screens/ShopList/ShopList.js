@@ -57,19 +57,6 @@ const ShopList = ({route}) => {
         navigation.navigate("HomePage");
     }
 
-    useEffect(() => {
-        fetch(HOST + '/api/customer/get/shop_list')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setShopData(data);
-                setShops(data);
-            })
-            .catch(error => {
-                console.error(error);
-        });
-    }, [navigation]);
-
     function renderHeader() {
         return (
             <View style = {styles.containerHeader}>
