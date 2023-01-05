@@ -14,8 +14,8 @@ const accessToken = 'pk.eyJ1IjoiaG9hbmd0cmFuMTI5MDIiLCJhIjoiY2xjZzN3OHdwMGYxODN2
 MapboxGL.setAccessToken(accessToken);
 const directionsClient = MapboxDirectionsFactory({ accessToken });
 
-const OrderTracking = () => {
-
+const OrderTracking = (input) => {
+    let { accountInfo } = input.route.params;
     //Sample data get from calling api
     const currentOrder = {
         ID: 1,
@@ -128,7 +128,7 @@ const OrderTracking = () => {
                         </Text>
                     </View>
                     <Image
-                        source={Route}
+                        source={icons.orderTracking}
                         style={styles.orderImage}
                     />
                 </View>

@@ -8,7 +8,9 @@ import OrderHistoryTag from "../../components/OrderHistoryTag/OrderHistoryTag";
 import HomeTags from "../../components/HomeTag/HomeTag";
 import MenuTags from "../../components/MenuTag/MenuTag";
 
-const HomePage = () => {
+const HomePage = ({route}) => {
+  let { accountInfo } = route.params;
+  console.log(accountInfo);
   const data = [
     {
         name: "Phuc Long - Kha Van Can",
@@ -66,7 +68,7 @@ const HomePage = () => {
     navigation.setOptions({
       headerTitle: true,
       headerStyle: ({height: 110}),
-      headerTitle: "Hello, {name}!",
+      headerTitle: `Hello, ${accountInfo.Name}!`,
       headerTitleAlign: 'left',
       headerTitleStyle: ({fontSize: 26, fontWeight: 'bold'}),
     })

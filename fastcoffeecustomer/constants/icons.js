@@ -13,6 +13,7 @@ export const home = require("../assets/icons/home.png");
 export const mail = require("../assets/icons/mail.png");
 export const phone = require("../assets/icons/phone.png");
 export const location = require("../assets/icons/location.png");
+export const orderTracking = require("../assets/icons/orderTracking.png");
 export const add = require("../assets/icons/add.png");
 export const remove = require("../assets/icons/remove.png");
 export const close = require("../assets/icons/close.png");

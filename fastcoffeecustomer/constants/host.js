@@ -1,0 +1,1 @@
+export const HOST = 'https://fast-coffee-be.vercel.app';
