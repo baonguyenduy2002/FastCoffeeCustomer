@@ -8,6 +8,7 @@ import UserProfile from './UserProfile/UserProfile';
 import ShopList from './ShopList/ShopList';
 
 import MenuPage from './Menu/Menu';
+import CheckoutOrder from './CheckOutOrder/CheckoutOrder';
 
 export {
     Login,
@@ -18,5 +19,6 @@ export {
     OrderTracking,
     MenuPage,
     UserProfile,
-    ShopList
+    ShopList,
+    CheckoutOrder
 }

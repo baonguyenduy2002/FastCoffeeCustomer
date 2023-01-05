@@ -16,6 +16,7 @@ export const location = require("../assets/icons/location.png");
 export const add = require("../assets/icons/add.png");
 export const remove = require("../assets/icons/remove.png");
 export const close = require("../assets/icons/close.png");
+export const editNote = require("../assets/icons/editNote.png");
 
 export default {
     logoLogin,
@@ -36,4 +37,5 @@ export default {
     add,
     remove,
     close,
+    editNote,
 }

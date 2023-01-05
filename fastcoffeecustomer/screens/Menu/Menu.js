@@ -11,70 +11,40 @@ const MenuPage = ({route}) => {
     const { id, name, photo, address, rating } = shop;
     const data = [
         {
+            item_id: 1,
             image: images.milktea,
             description: 'description',
             name: 'Milk Tea',
-            price: '50.000' 
+            price: 50000,
+            availability: true,
+            shop_id: 1,
         },
         {
+            item_id: 2,
             image: images.milktea,
             description: 'description',
             name: 'Coffee',
-            price: '50.000' 
+            price: 50000,
+            availability: true,
+            shop_id: 1,
         },
         {
+            item_id: 3,
             image: images.milktea,
             description: 'description',
             name: 'Oolong Tea',
-            price: '50.000' 
+            price: 50000,
+            availability: true,
+            shop_id: 1,
         },
         {
+            item_id: 4,
             image: images.milktea,
             description: 'description',
             name: 'Milk Tea',
-            price: '50.000' 
-        },
-        {
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: '50.000' 
-        },
-        {
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: '50.000' 
-        },
-        {
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: '50.000' 
-        },
-        {
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: '50.000' 
-        },
-        {
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: '50.000' 
-        },
-        {
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: '50.000' 
-        },
-        {
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: '50.000' 
+            price: 50000,
+            availability: true,
+            shop_id: 1,
         },
     ]
 
@@ -82,9 +52,14 @@ const MenuPage = ({route}) => {
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState("");
     const [filteredData, setFilteredData] = useState(data);
-
+    const [orderData, setOrderData] = useState([]);
+    const [total, setTotal] = useState(0);
     const onBackPressed = () => {
         navigation.navigate("ShopList");
+    }
+
+    const onCheckOrderPressed = () => {
+        navigation.navigate("CheckOrder", {data: orderData, total: total});
     }
 
     return (
@@ -117,7 +92,7 @@ const MenuPage = ({route}) => {
                         setFilter={setFilteredData}
                     />
                     <TouchableOpacity
-                        onPress={{}}
+                        onPress={onCheckOrderPressed}
                         style={styles.backButton}
                     >
                         <Image 
@@ -174,7 +149,7 @@ const MenuPage = ({route}) => {
                     {
                         filteredData.map((item, index) => {
                             return (
-                                <ItemTags key={index} props={item}/>
+                                <ItemTags key={index} props={item} orderList={orderData} setOrderList={setOrderData} total={total} setTotal={setTotal} />
                             )              
                         })
                     }

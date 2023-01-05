@@ -71,7 +71,7 @@ const ShopList = () => {
                                 tintColor: COLORS.black
                             }}
                         />
-                    </TouchableOpacity>
+                </TouchableOpacity>
                 <TouchableOpacity style= {[styles.locationButton, styles.shadow]}>
                     <Image 
                         source={icons.location}

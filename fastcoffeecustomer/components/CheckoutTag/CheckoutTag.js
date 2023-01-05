@@ -1,61 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity, Modal, Pressable, TextInput } from 'react-native';
 
 import { COLORS, icons, images } from "../../constants";
-import { cupCoffee } from "../../constants/icons";
 
 
-const ItemTags = ({props, orderList, setOrderList, total, setTotal}) => {
-    const {image, description, name, price} = props;
-    const [count, setCount] = useState(0);
+
+const CheckoutTags = ({props}) => {
+    const { name, description, item_note, count, price, image, ...item} = props;
     const [modalVisible, setModalVisible] = useState(false);
-    const [note, setNote] = useState('');
-
-    function updateNote() {
-        setModalVisible(!modalVisible);
-        const idx = orderList.findIndex(item => item.name === name);
-        orderList[idx].item_note = note;
-    }
-
-    function updateOrderList(_count) {
-        if (_count == 1) {
-            props['count'] = 1;
-            orderList.push(props);
-        }
-        else {
-            const idx = orderList.findIndex(item => item.name === name);
-            orderList[idx].count = _count;
-        }
-        setTotal(total + price)
-        setOrderList(orderList);
-    };
-
-    function removeOrderList(_count) {
-        const idx = orderList.findIndex(item => item.name === name);
-        if (_count == 0) {
-            orderList.splice(idx, 1);
-        }
-        else {
-            orderList[idx].count = _count;
-        }
-        setTotal(total - price)
-        setOrderList(orderList);
-    }
-
-    const plus = () => {
-        setCount(count + 1);
-        updateOrderList(count + 1);
-    };
-
-    const minus = () => {
-        if (count > 0) {
-            setCount(count - 1);
-            removeOrderList(count - 1);
-        };
-        if (count == 1) {
-            setNote("");
-        };
-    };
 
     return (
         <View style={styles.container}>
@@ -70,7 +22,7 @@ const ItemTags = ({props, orderList, setOrderList, total, setTotal}) => {
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
                         <View style={styles.modelHeader}>
-                            <Text style={styles.modalText}>Add Note</Text>
+                            <Text style={styles.modalText}>Note</Text>
                             <Pressable
                                 onPress={() => setModalVisible(!modalVisible)}
                             >
@@ -79,18 +31,10 @@ const ItemTags = ({props, orderList, setOrderList, total, setTotal}) => {
                         </View>
                         <View style={styles.input}>
                             <TextInput
-                                value={note}
-                                onChangeText={setNote}
-                                placeholder="Add some note..."
+                                value={item_note}
+                                placeholder="Have no note"
                             />
                         </View>
-                        <Pressable style={styles.sendButton} onPress={updateNote}>
-                                <Text style={{
-                                    fontSize: 15,
-                                    fontWeight: 'bold',
-                                    color: COLORS.white
-                                }}>Send</Text>
-                        </Pressable>
                     </View>
                 </View>
             </Modal>
@@ -105,42 +49,19 @@ const ItemTags = ({props, orderList, setOrderList, total, setTotal}) => {
                     <Text style={styles.name}>{name}</Text>
                     <Text style={styles.description}>{description}</Text>
                     <View style={styles.countPart}>
-                        <TouchableOpacity 
-                            onPress={plus}
-                            style={{ borderWidth: 1, borderColor: COLORS.darkgray }}
-                        >
-                            <Image 
-                                source={icons.add}
-                                style={{ width: 20, height: 20, tintColor: COLORS.primary }}
-                            />
-                        </TouchableOpacity>
-                        {count > 0 &&  (
-                            <>
-                                <Text
-                                    style={{
-                                        fontSize: 15,
-                                        paddingHorizontal: 5,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        marginHorizontal: 3,
-                                    }}
-                                >{count}</Text>
-                                <TouchableOpacity
-                                    onPress={minus}
-                                    style={{ borderWidth: 1, borderColor: COLORS.darkgray }}
-                                >
-                                    <Image 
-                                        source={icons.remove}
-                                        style={{ width: 20, height: 20 }}
-                                    />
-                                </TouchableOpacity>
-                            </>    
-                        )}
+                        <Text
+                            style={{
+                                fontSize: 15,
+                                paddingHorizontal: 5,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginHorizontal: 3,
+                            }}
+                        >X {count}</Text>
                     </View>
                 </View>
                 <View style={styles.info2}>
-                    <Text style={styles.price}>{price}đ</Text>
-                    {count > 0 && (
+                    <Text style={styles.price}>{price * count}đ</Text>
                         <TouchableOpacity
                             onPress={() => {setModalVisible(true)}}
                         >
@@ -151,9 +72,8 @@ const ItemTags = ({props, orderList, setOrderList, total, setTotal}) => {
                                 fontWeight: '500',
                                 fontSize: 14,
                             }}
-                        >+ Add note</Text>
+                        >Note</Text>
                     </TouchableOpacity>
-                    )}
                 </View>
             </View>
         </View>
@@ -178,17 +98,17 @@ const styles = StyleSheet.create ({
         flexDirection: 'row',
         alignItems: 'stretch',
         justifyContent: 'space-between',
-        width: '75%',
+        width: '78%',
         height: '100%',
     },
     info1: {
         justifyContent: 'space-between',
-        width: '75%',
+        width: '70%',
     },
     info2: {
         alignItems: 'flex-end',
         justifyContent: 'space-between',
-        flex: 1
+        flex: 1,
     },
     name: {
         fontSize: 17,
@@ -226,7 +146,6 @@ const styles = StyleSheet.create ({
         height: 200,
         width: '80%',
         alignItems: 'flex-start',
-        justifyContent: 'space-between',
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
@@ -259,7 +178,7 @@ const styles = StyleSheet.create ({
         borderWidth: 1,
         borderColor: COLORS.darkgray,
         width: '100%',
-        height: '60%',
+        height: '80%',
         padding: 5,
     },
     sendButton: {
@@ -272,4 +191,4 @@ const styles = StyleSheet.create ({
 
 
 
-export default ItemTags;
+export default CheckoutTags;
