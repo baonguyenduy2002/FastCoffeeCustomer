@@ -54,7 +54,7 @@ const ShopList = () => {
     ]
 
     const navigation = useNavigation();
-    const [shopData, setShopData] = useState([]);
+    // const [shopData, setShopData] = useState([]);
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState("");
     const [shop, setShops] = useState(shopData);
