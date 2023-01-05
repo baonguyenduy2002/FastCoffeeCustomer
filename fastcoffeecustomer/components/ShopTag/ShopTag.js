@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
@@ -8,8 +8,27 @@ import { icons } from '../../constants';
 const ShopTags = ({item}) => {
     const navigation = useNavigation();
 
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        fetch(HOST + `/api/customer/get/item/${item.Shop_ID}`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                setItems(data);
+            })
+            .catch(error => {
+                console.error(error);
+        });
+    }, []);
+
     const onShopPressed = () => {
-        navigation.navigate('MenuPage', {shop: item, items: ""})
+        navigation.navigate('MenuPage', {shop: item, items: items})
     }
     return (
         <TouchableOpacity

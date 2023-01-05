@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { icons, images, COLORS } from "../../constants";
+import { icons, images, COLORS, HOST } from "../../constants";
 import PromoTags from "../../components/PromoTag/PromoTag";
 import OrderHistoryTag from "../../components/OrderHistoryTag/OrderHistoryTag";
 import HomeTags from "../../components/HomeTag/HomeTag";
@@ -10,24 +10,24 @@ import MenuTags from "../../components/MenuTag/MenuTag";
 
 const HomePage = ({route}) => {
   let { accountInfo } = route.params;
-  console.log(accountInfo);
-  const data = [
-    {
-        name: "Phuc Long - Kha Van Can",
-        time: "1 jan 2023 13:23",
-        price: "200.000"
-    },
-    {
-        name: "Gong Cha",
-        time: "25 dec 2022 19:00",
-        price: "1.500.000"
-    },
-    {
-      name: "TocoToco",
-      time: "2 jan 2023 13:00",
-      price: "100.000"
-    },
-  ];
+  // console.log(accountInfo);
+  // const data = [
+  //   {
+  //       name: "Phuc Long - Kha Van Can",
+  //       time: "1 jan 2023 13:23",
+  //       price: "200.000"
+  //   },
+  //   {
+  //       name: "Gong Cha",
+  //       time: "25 dec 2022 19:00",
+  //       price: "1.500.000"
+  //   },
+  //   {
+  //     name: "TocoToco",
+  //     time: "2 jan 2023 13:00",
+  //     price: "100.000"
+  //   },
+  // ];
   const Promo = [
     {
         image: images.phuclong,
@@ -63,6 +63,8 @@ const HomePage = ({route}) => {
     },
   ];
   const navigation = useNavigation();
+  const [orderHistory, setOrderHistory] = useState([]);
+  
 
   useEffect(() => {
     navigation.setOptions({
@@ -71,9 +73,24 @@ const HomePage = ({route}) => {
       headerTitle: `Hello, ${accountInfo.Name}!`,
       headerTitleAlign: 'left',
       headerTitleStyle: ({fontSize: 26, fontWeight: 'bold'}),
-    })
-
+    });
+    
   }, [navigation]);
+
+  useEffect(() => {
+    fetch(HOST + `/api/customer/get/order_history/${accountInfo.Acc_ID}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => response.json())
+      .then(data => {setOrderHistory(data)})
+      .catch(error => {
+          console.error(error);
+      });
+  }, []);
 
   const onSeeAllHistoryPressed = () => {
     navigation.navigate('HistoryPage');
@@ -115,7 +132,7 @@ const HomePage = ({route}) => {
             title="Order History" 
             SubTag={OrderHistoryTag} 
             onPress={onSeeAllHistoryPressed}
-            data={data}
+            data={orderHistory}
             styleContainer={styles.orderHistoryContainer}
           />
           {/* Popular Menu Container */}

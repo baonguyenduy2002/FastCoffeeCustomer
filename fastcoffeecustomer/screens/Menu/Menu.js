@@ -8,50 +8,50 @@ import ItemTags from "../../components/ItemTag/ItemTag";
 
 const MenuPage = ({route}) => {
     const { shop, items } = route.params;
-    const { id, name, photo, address, rating } = shop;
-    const data = [
-        {
-            item_id: 1,
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: 50000,
-            availability: true,
-            shop_id: 1,
-        },
-        {
-            item_id: 2,
-            image: images.milktea,
-            description: 'description',
-            name: 'Coffee',
-            price: 50000,
-            availability: true,
-            shop_id: 1,
-        },
-        {
-            item_id: 3,
-            image: images.milktea,
-            description: 'description',
-            name: 'Oolong Tea',
-            price: 50000,
-            availability: true,
-            shop_id: 1,
-        },
-        {
-            item_id: 4,
-            image: images.milktea,
-            description: 'description',
-            name: 'Milk Tea',
-            price: 50000,
-            availability: true,
-            shop_id: 1,
-        },
-    ]
+    const { Shop_ID, Name, Address } = shop;
+    // const data = [
+    //     {
+    //         item_id: 1,
+    //         image: images.milktea,
+    //         description: 'description',
+    //         name: 'Milk Tea',
+    //         price: 50000,
+    //         availability: true,
+    //         shop_id: 1,
+    //     },
+    //     {
+    //         item_id: 2,
+    //         image: images.milktea,
+    //         description: 'description',
+    //         name: 'Coffee',
+    //         price: 50000,
+    //         availability: true,
+    //         shop_id: 1,
+    //     },
+    //     {
+    //         item_id: 3,
+    //         image: images.milktea,
+    //         description: 'description',
+    //         name: 'Oolong Tea',
+    //         price: 50000,
+    //         availability: true,
+    //         shop_id: 1,
+    //     },
+    //     {
+    //         item_id: 4,
+    //         image: images.milktea,
+    //         description: 'description',
+    //         name: 'Milk Tea',
+    //         price: 50000,
+    //         availability: true,
+    //         shop_id: 1,
+    //     },
+    // ]
 
     const navigation = useNavigation();
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState("");
-    const [filteredData, setFilteredData] = useState(data);
+    const [filteredData, setFilteredData] = useState(items);
     const [orderData, setOrderData] = useState([]);
     const [total, setTotal] = useState(0);
     const onBackPressed = () => {
@@ -88,7 +88,7 @@ const MenuPage = ({route}) => {
                         setSearchPhrase={setSearchPhrase}
                         clicked={clicked}
                         setClicked={setClicked}
-                        data={data}
+                        data={items}
                         setFilter={setFilteredData}
                     />
                     <TouchableOpacity
@@ -118,13 +118,13 @@ const MenuPage = ({route}) => {
                                 fontSize: 20,
                                 fontWeight: 'bold',
                             }}
-                        >{name}</Text>
+                        >{Name}</Text>
                         <Text
                             style={{
                                 fontSize: 15,
                                 fontWeight: '300',
                             }}
-                        >{address}</Text>
+                        >{Address}</Text>
                         <View style={styles.rating}>
                             <Image 
                                 source={icons.star}
@@ -134,7 +134,7 @@ const MenuPage = ({route}) => {
                                     tintColor: COLORS.primary
                                 }}
                             />
-                            <Text>{rating}</Text>
+                            <Text>{4.5}</Text>
                         </View>
                     </View>
                     <Text 

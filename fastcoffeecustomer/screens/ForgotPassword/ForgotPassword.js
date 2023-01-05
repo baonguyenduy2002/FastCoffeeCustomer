@@ -17,8 +17,19 @@ function ForgotPassword() {
     };
 
     const onSendPressed = () => {
-        navigation.navigate("Home")
+        navigation.navigate("Home", {accountInfo: accountInfo[0]})
     };
+
+    // const accountInfo = [
+    //     {
+    //         Acc_ID: 3,
+    //         Name: 'Le Hoang',
+    //         Address: '21 Stress',
+    //         DoB: '2022-10-10T',
+    //         Phone_number: '123456789',
+    //         Email: 'hoangle@gmai.com'
+    //     }
+    // ]
 
     return (
         <View style={Styles.container}>

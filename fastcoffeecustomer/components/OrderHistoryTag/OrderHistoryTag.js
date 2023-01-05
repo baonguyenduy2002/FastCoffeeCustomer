@@ -5,7 +5,7 @@ import { images } from "../../constants";
 
 
 const OrderHistoryTag = ({props, type}) => {
-    const {name, price, time} = props;
+    const {Name, Price, DateTime, Address} = props;
     return (
         <View style={[styles.container, styles[`container_${type}`]]}>
             <Image 
@@ -13,14 +13,15 @@ const OrderHistoryTag = ({props, type}) => {
                 style={styles.image}
             />
             <View style={styles[`infor_${type}`]}>
-                <Text style={styles.name}>{name}</Text>
-                <Text style={styles.time}>{time}</Text>
+                <Text style={styles.name}>{Name}</Text>
+                <Text style={styles.time}>{Address}</Text>
+                <Text style={styles.time}>{DateTime.split('T')[0]}</Text>
             </View>
-            {type != "HOME" && (
+            {/* {type != "HOME" && (
                 <View style={styles.total}>
-                    <Text style={styles.price}>{price}đ</Text>
+                    <Text style={styles.price}>{Price}đ</Text>
                 </View>
-            )}
+            )} */}
             
         </View>
     )

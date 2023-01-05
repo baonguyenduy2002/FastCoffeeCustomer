@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet, Image, Alert } from "react-native";
-import { COLORS } from '../../constants'
-import { Route } from "../../assets/images"
-import * as Progress from "react-native-progress"
+import { COLORS, icons } from '../../constants';
+import * as Progress from "react-native-progress";
 import MapboxGL from '@rnmapbox/maps';
 import * as Location from 'expo-location';
 import { lineString as makeLineString } from '@turf/helpers';

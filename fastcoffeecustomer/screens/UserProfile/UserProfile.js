@@ -26,8 +26,8 @@ const UserProfile = ({route}) => {
                 </View>
                 <View style={{alignItems:'center'}}>
                     <Image source={icons.user} style={{width:140,height:140,borderRadius:100,marginTop:-70}}></Image>
-                    <Text style={{fontSize:25,fontWeight:'bold',padding:10}}>User Name</Text>
-                    <Text style={{fontSize:15,fontWeight:'bold',padding:5}}>#000001</Text>
+                    <Text style={{fontSize:25,fontWeight:'bold',padding:10}}>{accountInfo.Name}</Text>
+                    <Text style={{fontSize:15,fontWeight:'bold',padding:5}}>#{accountInfo.Acc_ID}</Text>
                 </View>
                 <View style={{
                     alignSelf:'center',
@@ -41,7 +41,7 @@ const UserProfile = ({route}) => {
                     marginTop:20,
                 }}>
                     <Image source={icons.home} style={{width:20,height:20}}></Image>
-                    <Text>Address</Text>
+                    <Text>Address: {accountInfo.Address}</Text>
 
                 </View>
                 <View style={{
@@ -57,7 +57,7 @@ const UserProfile = ({route}) => {
                     marginTop:20
                 }}>
                     <Image source={icons.birthday} style={{width:20,height:20}}></Image>
-                    <Text>Date of Birth</Text>
+                    <Text>Date of Birth: {accountInfo.DoB.split('T')[0]}</Text>
 
                 </View>
                 <View style={{
@@ -73,7 +73,7 @@ const UserProfile = ({route}) => {
                     
                 }}>
                     <Image source={icons.phone} style={{width:20,height:20}}></Image>
-                    <Text>Phone Number</Text>
+                    <Text>Phone Number: {accountInfo.Phone_number}</Text>
 
                 </View>
                 <View style={{
@@ -88,7 +88,7 @@ const UserProfile = ({route}) => {
                     marginTop:20
                 }}>
                     <Image source={icons.mail} style={{width:20,height:20}}></Image>
-                    <Text>Email</Text>
+                    <Text>Email: {accountInfo.Email}</Text>
 
                 </View>
                 <TouchableOpacity style={{

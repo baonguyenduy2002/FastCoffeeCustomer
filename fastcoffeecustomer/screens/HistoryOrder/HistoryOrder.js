@@ -2,37 +2,35 @@ import React, { useEffect, useState, useLayoutEffect } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import { icons, COLORS } from "../../constants";
+import { icons, COLORS, HOST } from "../../constants";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import OrderHistoryTag from "../../components/OrderHistoryTag/OrderHistoryTag";
 
-const History = (params) => {
-    let { accountInfo } = params;
-
+const History = ({route}) => {
+    let { accountInfo } = route.params;
+    // const data = [
+    //     {
+    //         name: "Phuc Long - Kha Van Can",
+    //         time: "1 jan 2023 13:23",
+    //         price: "200.000"
+    //     },
+    //     {
+    //         name: "Gong Cha",
+    //         time: "25 dec 2022 19:00",
+    //         price: "1.500.000"
+    //     },
+    //     {
+    //         name: "TocoToco",
+    //         time: "2 jan 2023 13:00",
+    //         price: "100.000"
+    //     },
+    // ];
+    
     const navigation = useNavigation();
+    const [orderHistory, setOrderHistory] = useState([]);
     const [clicked, setClicked] = useState(false);
     const [searchPhrase, setSearchPhrase] = useState("");
-    
-
-    const data = [
-        {
-            name: "Phuc Long - Kha Van Can",
-            time: "1 jan 2023 13:23",
-            price: "200.000"
-        },
-        {
-            name: "Gong Cha",
-            time: "25 dec 2022 19:00",
-            price: "1.500.000"
-        },
-        {
-            name: "TocoToco",
-            time: "2 jan 2023 13:00",
-            price: "100.000"
-        },
-    ];
-    
-    const [filteredData, setFilteredData] = useState(data);
+    const [filteredData, setFilteredData] = useState([]);
 
     useEffect(() => {
         navigation.setOptions({
@@ -42,9 +40,28 @@ const History = (params) => {
             headerTitleAlign: 'left',
             headerTitleStyle: ({color: COLORS.primary, fontSize: 30, fontWeight: 'bold'}),
         });
-        setFilteredData(data);
+        setFilteredData(orderHistory);
 
     }, [navigation]);
+
+    useEffect(() => {
+        fetch(HOST + `/api/customer/get/order_history/${accountInfo.Acc_ID}`, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+        })
+            .then(response => response.json())
+            .then(data => {
+                setOrderHistory(data);
+                setFilteredData(data); 
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
 
     return (
         <View style={styles.container}>
@@ -53,7 +70,7 @@ const History = (params) => {
                 setSearchPhrase={setSearchPhrase}
                 clicked={clicked}
                 setClicked={setClicked}
-                data={data}
+                data={orderHistory}
                 setFilter={setFilteredData}
             />
             <ScrollView 

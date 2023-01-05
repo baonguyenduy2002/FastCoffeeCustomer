@@ -27,7 +27,7 @@ function Login() {
         })
             .then(response => response.json())
             .then(accountInfo => {
-                console.log(accountInfo);
+                // console.log(accountInfo);
                 if (accountInfo.length === 0) {
                     Alert.alert(
                         "Error!",
