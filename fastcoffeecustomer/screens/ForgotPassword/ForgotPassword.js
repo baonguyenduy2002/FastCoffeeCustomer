@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, StyleSheet, Image, useColorScheme } from "react-native";
+import { View, Text, StyleSheet, Alert } from "react-native";
 import CustomInput from "../../components/CustomInput/CustomInput.js";
 import CustomButton from "../../components/CustomButton/CustomButton.js";
 import { useNavigation } from "@react-navigation/native";
@@ -17,7 +17,14 @@ function ForgotPassword() {
     };
 
     const onSendPressed = () => {
-        navigation.navigate("Home", {accountInfo: accountInfo[0]})
+        Alert.alert(
+            "Error!",
+            "This function is not available at the moment!",
+            [
+                { text: "OK" }
+            ]
+        );
+        // navigation.navigate("Home")
     };
 
     // const accountInfo = [
