@@ -6,6 +6,7 @@ import MapboxGL from '@rnmapbox/maps';
 import * as Location from 'expo-location';
 import { lineString as makeLineString } from '@turf/helpers';
 import MapboxDirectionsFactory from '@mapbox/mapbox-sdk/services/directions';
+import { CurrentRenderContext } from "@react-navigation/native";
 
 //Initialize Mapbox and Mapbox Drirection SDK
 MapboxGL.setWellKnownTileServer('Mapbox')
@@ -52,8 +53,6 @@ const OrderTracking = (input) => {
                 const curLoc = [res.coords.longitude, res.coords.latitude]
                 setLocation(curLoc);
                 setStartDestinationPoints([curLoc, currentOrder.Shop_Location]);
-                // console.log(myLocation)
-                // console.log(startDestinationPoints);
                 fetchRoute(curLoc, currentOrder.Shop_Location);
             }
         })();

@@ -27,7 +27,7 @@ const UserProfile = ({ route }) => {
                 <View style={{ alignItems: 'center' }}>
                     <Image source={icons.user} style={{ width: 140, height: 140, borderRadius: 100, marginTop: -70 }}></Image>
                     <Text style={{ fontSize: 25, fontWeight: 'bold', padding: 10 }}>{accountInfo.Name}</Text>
-                    <Text style={{ fontSize: 15, fontWeight: 'bold', padding: 5 }}>{accountInfo.Acc_ID}</Text>
+                    <Text style={{ fontSize: 15, fontWeight: 'bold', padding: 5 }}>#{accountInfo.Acc_ID}</Text>
                 </View>
                 <View style={{
                     alignSelf: 'center',
